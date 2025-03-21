@@ -1,0 +1,47 @@
+# version: '3.8'
+
+services:
+    # orientdb:
+    #     image: orientdb:latest
+    #     container_name: orientdb
+    #     ports:
+    #         - "2424:2424"  # Binary protocol port
+    #         - "2480:2480"  # HTTP protocol port
+    #     environment:
+    #         - ORIENTDB_ROOT_PASSWORD=yourpassword
+    #     volumes:
+    #         - orientdb_data:/orientdb/databases
+    #     restart: unless-stopped
+
+    docker_mongo:
+        image: mongo:latest
+        container_name: docker_mongo
+        ports:
+            - "27017:27017"  # MongoDB port
+        volumes:
+            - mongo_data:/data/db
+        restart: unless-stopped
+
+    docker_redis:
+        image: redis:latest
+        container_name: docker_redis
+        ports:
+            - "6379:6379"  # Redis port
+        volumes:
+            - redis_data:/data
+        restart: unless-stopped
+
+    # redis_stack_server:
+    #     image: redis/redis-stack-server:latest
+    #     container_name: redis_stack_server
+    #     ports:
+    #         - "6379:6379"  # Redis Stack Server port
+    #     volumes:
+    #         - redis_stack_data:/data
+    #     restart: unless-stopped
+
+volumes:
+    # orientdb_data:
+    mongo_data:
+    redis_data:
+    # redis_stack_data:
